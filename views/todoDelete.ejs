@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<head>
+    <title><%= title  %> </title>
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Candal|Chewy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="todo-container">
+        <h2>To-Do List</h2>
+        <div class="todo">
+            <form class="todo-header">
+                <input type="text" name="content">
+                <button type="submit"><span class="fas fa-plus"></span></button>
+            </form>
+            <ul class="todo-list">
+                <% tasks.forEach(details => { %>
+                <% if (details.id == task.id)  { %>
+                <li class="todo-list-item">
+                    <form id='deleteForm'>
+                        <input type="text" value="<%= details.content %>" name="content" class="deleteClass"
+                            data-id="<%= details.id %>">
+                        <button type="submit">Confirm</button>
+                        <a href="/" class="cancel">Cancel</a>
+                    </form>
+                </li>
+                <% } else { %>
+                <li class="todo-list-item">
+                    <div class="todo-list-item-name"><%= details.content %></div>
+                    <a href="/edit/<%= details._id %>" class="edit"> <span class="fas fa-edit"></span>
+                    </a>
+                    <a href="/delete/<%= details._id %>" class="remove"> <span class="fas fa-times"></span>
+                    </a>
+                </li>
+                <% } %>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/deleteTodo.js"></script>
+    <script src="/js/request.js"></script>
+</body>
