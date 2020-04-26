@@ -8,17 +8,11 @@ const viewRouter = require("./routes/viewRoutes");
 
 dotenv.config({ path: "./config.env" });
 const app = express();
-// database connection
-// const DB = process.env.DATABASE.replace(
-//   "<PASSWORD>",
-//   process.env.DATABASE_PASSWORD
-// );
-const DB = process.env.DATABASE;
+const DB = `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@cluster0-yqpc9.mongodb.net/todoList?retryWrites=true&w=majority`;
 mongoose
   .connect(`${DB}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false,
     useCreateIndex: true,
   })
   .then(() => console.log("App successfully connected to the database"))
