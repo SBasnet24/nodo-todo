@@ -4,7 +4,8 @@
   "description": "CRUD Todolist",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon index"
   },
   "author": "Sujan Basnet",
   "license": "ISC",
